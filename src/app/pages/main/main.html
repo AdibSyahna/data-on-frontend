@@ -1,0 +1,48 @@
+<ng-container [ngTemplateOutlet]="Header"></ng-container>
+
+@if (layout.mode() == 'desktop') {
+<mat-sidenav-container id="main-container">
+    <mat-sidenav mode="side" opened><ng-container [ngTemplateOutlet]="Menu"></ng-container></mat-sidenav>
+    <mat-sidenav-content><ng-container [ngTemplateOutlet]="Content"></ng-container></mat-sidenav-content>
+</mat-sidenav-container>
+} @else {
+<mat-sidenav-container id="main-container">
+    <mat-sidenav #sidenav mode="over"><ng-container [ngTemplateOutlet]="Menu"></ng-container></mat-sidenav>
+    <mat-sidenav-content><ng-container [ngTemplateOutlet]="Content"></ng-container></mat-sidenav-content>
+</mat-sidenav-container>
+}
+
+<!-- ================================================================================================================== -->
+
+<ng-template #Header>
+    <header class="page-header">
+        <div class="header-content">
+            @if (layout.mode() == 'mobile') {
+
+            <button matMiniFab (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+
+            }
+            <span class="site-title bottom-border">{{activeContent}}</span>
+        </div>
+    </header>
+</ng-template>
+
+<ng-template #Menu>
+    @for(menu of sidenavMenus; track $index){
+    <div class="nav-list-container">
+        <button class="nav-list" (click)="changeContent(menu)"
+            [matButton]="activeContent == menu.title ? 'filled' : 'elevated'">
+            <mat-icon>{{menu.icon}}</mat-icon>
+            {{menu.title}}
+        </button>
+    </div>
+    }
+
+</ng-template>
+
+<ng-template #Content>
+    <ng-container *ngComponentOutlet="activePage"></ng-container>
+</ng-template>

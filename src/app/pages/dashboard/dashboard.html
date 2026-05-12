@@ -1,0 +1,44 @@
+<mat-card appearance="outlined" class="container">
+    <mat-card-header>
+        <mat-card-title> Daftar Tamu</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">No. Telp</th>
+                    <th scope="col">Alasan Kunjungan</th>
+                    <th scope="col">Waktu Check In</th>
+                    <th scope="col">Waktu Check Out</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (tamu of daftarTamu(); track tamu.id; let i = $index) {
+                <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                        {{ tamu.first_name }} {{ tamu.last_name }}
+                    </td>
+                    <td>{{ tamu.phone_number }}</td>
+                    <td>{{ tamu.visit_purpose }}</td>
+                    <td>{{ parseTime(tamu.check_in) }}</td>
+                    <td>{{ tamu.check_out ? parseTime(tamu.check_out) : "Belum Check Out" }}</td>
+                    <td>
+                        @if(!tamu.check_out){
+                        <button matButton="outlined"
+                            (click)="checkOut(tamu.id, tamu.first_name + ' ' + tamu.last_name)">Check Out</button>
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button matButton (click)="openAddGuestModal()">Tambah Tamu</button>
+    </mat-card-actions>
+</mat-card>
+<br>

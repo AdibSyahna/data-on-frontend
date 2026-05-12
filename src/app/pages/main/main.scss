@@ -1,0 +1,73 @@
+#main-container {
+    height: calc(100% - 80px);
+
+    mat-sidenav {
+        // add backdrop
+        box-shadow: 8px 40px 20px 3px rgba(0, 0, 0, 0.05);
+        padding-top: 4px;
+        max-width: 200px;
+    }
+}
+
+.page-header {
+    padding: 0 24px;
+    height: 80px;
+    box-shadow: 8px 40px 20px 3px rgba(0, 0, 0, 0.05);
+    // position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+}
+
+.site-title {
+    font-weight: bolder;
+    width: fit-content;
+    margin: 0;
+    letter-spacing: -0.5px;
+
+    font-size: 2.5em;
+    /* or your h1 size */
+    font-family: inherit;
+}
+
+.bottom-border {
+    position: relative;
+}
+
+.bottom-border::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 200%;
+    height: 8px;
+    /* border thickness */
+    background: linear-gradient(to right,
+            var(--primary-accent) 0%,
+            var(--primary-accent) 25%,
+            var(--secondary-accent) 25%,
+            var(--secondary-accent) 50%,
+            var(--background) 50%,
+            var(--background) 100%);
+}
+
+.nav-list-container {
+    padding-right: 12px;
+    padding-left: 12px;
+    text-align: end;
+}
+
+.nav-list-container+.nav-list-container {
+    margin-top: 12px;
+}
+
+.nav-list {
+    width: 100%;
+    border-radius: 12px;
+    justify-content: flex-start;
+    display: flex;
+}

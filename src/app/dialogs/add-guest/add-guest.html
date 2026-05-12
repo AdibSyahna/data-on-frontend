@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">Tambah Tamu</h4>
+</div>
+<div class="modal-body">
+    <mat-form-field appearance="outline">
+        <mat-label>Nama Depan</mat-label>
+        <input matInput [formControl]="firstName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Nama Belakang</mat-label>
+        <input matInput [formControl]="lastName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Nomor Telepon</mat-label>
+        <input matInput [formControl]="phoneNumber" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Nomor KTP/SIM</mat-label>
+        <input matInput [formControl]="idCardNo" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Alasan Kunjungan</mat-label>
+        <textarea matInput [formControl]="visitPurpose" rows="3"></textarea>
+    </mat-form-field>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Batal</button>
+    <button type="button" class="btn btn-primary" (click)="register()">Tambah</button>
+</div>

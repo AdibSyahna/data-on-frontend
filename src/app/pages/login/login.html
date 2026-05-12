@@ -1,0 +1,47 @@
+<div id="login-container">
+    <div id="box">
+        <div>
+            <div id="registerForm">
+
+                <div id="logo-container">
+                    <img src="logo.png" id="logo" alt="">
+                    <h3>Guest Registry</h3>
+                </div>
+
+
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    @if (layout.mode() == 'desktop') {
+                    <mat-icon class="hover-question" [matTooltip]="requirement_login.username" matPrefix>
+                        question_mark
+                    </mat-icon>
+                    }
+                    <input matInput [formControl]="username" (keyup)="errUsernameMsg()" required>
+                    @if (username.invalid) {
+                    <mat-error>{{errUsernameMsg()}}</mat-error>
+                    }
+                </mat-form-field>
+
+                <br><br>
+
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    @if (layout.mode() == 'desktop') {
+                    <mat-icon class="hover-question" [matTooltip]="requirement_login.password" matPrefix>
+                        question_mark
+                    </mat-icon>
+                    }
+                    <input type="password" matInput [formControl]="password" (keyup)="errPasswordMsg()" required>
+                    @if (password.invalid) {
+                    <mat-error>{{errPasswordMsg()}}</mat-error>
+                    }
+                </mat-form-field>
+
+                <hr>
+
+                <button [disabled]="username.invalid || password.invalid" style="width: 100%;" (click)="login()"
+                    mat-flat-button color="primary">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

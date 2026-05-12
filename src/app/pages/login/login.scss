@@ -1,0 +1,40 @@
+#login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#box {
+    border: 1px solid;
+    border-color: var(--secondary-accent);
+    height: fit-content;
+    padding: 24px;
+    padding-top: 12px;
+    border-radius: 12px;
+    width: min-content;
+    margin: 0 auto;
+}
+
+#registerForm ::placeholder {
+    color: var(--color-bright);
+}
+
+#logo-container{
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#logo{
+    width: auto;
+    height: 120px;
+}
+
+hr {
+    border-color: var(--color-black);
+}
+
+mat-icon {
+    color: black;
+}
