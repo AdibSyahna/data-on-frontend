@@ -31,7 +31,6 @@ interface Guest {
 })
 export class Dashboard implements OnInit {
   private modalService = inject(NgbModal);
-
   public daftarTamu = signal<Guest[]>([]);;
 
   public constructor(public auth: Auth, private http: HttpClient) { }
@@ -56,7 +55,7 @@ export class Dashboard implements OnInit {
   }
 
   public async checkOut(id: number, name: string) {
-    confirm(`Check-out tamu ${name}?`)
+    confirm(`Check-out tamu "${name}"?`)
       &&
       await lastValueFrom(this.http.post(this.auth.server_host() + "/guest/checkout", { id }))
         .then((res: any): any => {

@@ -30,8 +30,6 @@ export class Main {
   }
   ];
 
-
-
   public constructor(public layout: Layout) { }
 
   public changeContent(menu: SidenavMenu) {

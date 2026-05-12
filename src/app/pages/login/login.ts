@@ -9,8 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { Layout } from '../../services/layout/layout';
-import { lastValueFrom } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -28,7 +26,7 @@ export class Login {
     password: "Your account's password"
   }
 
-  public constructor(public auth: Auth, public layout: Layout, private http: HttpClient) { }
+  public constructor(public auth: Auth, public layout: Layout) { }
 
   public async login() {
     if (this.password.invalid || this.username.invalid) return;
@@ -42,7 +40,6 @@ export class Login {
       
       this.layout.toggleOverlay(false);
       alert("Login gagal! Silahan periksa kembali username dan password Anda.");
-      // Handle login error
     }
   }
 
