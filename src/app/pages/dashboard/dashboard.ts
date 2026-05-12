@@ -6,6 +6,9 @@ import { AddGuest } from '../../dialogs/add-guest/add-guest';
 import { lastValueFrom } from 'rxjs';
 import { Auth } from '../../services/auth/auth';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 interface Guest {
   id: number,
@@ -25,13 +28,14 @@ interface Guest {
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard implements OnInit {
   private modalService = inject(NgbModal);
-  public daftarTamu = signal<Guest[]>([]);;
+  public daftarTamu = signal<Guest[]>([]);
+  public searchQuery: string = "";
 
   public constructor(public auth: Auth, private http: HttpClient) { }
 
